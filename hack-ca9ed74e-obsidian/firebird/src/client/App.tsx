@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties, type FormEvent } from 'react';
 import {
   AlertCircle,
   CalendarDays,
@@ -24,6 +24,7 @@ type FormState = {
   hours: string;
   language: string;
 };
+type UnitInputStyle = CSSProperties & { '--input-ch': string };
 
 const presets: { label: string; note: string; query: FormState }[] = [
   {
@@ -109,6 +110,9 @@ const presets: { label: string; note: string; query: FormState }[] = [
 const money = (value: number) => new Intl.NumberFormat('ru-RU').format(value);
 const dateText = (value: string) => value.split('-').reverse().join('.');
 const titleCase = (value: string) => value ? value[0].toLocaleUpperCase('ru-RU') + value.slice(1) : value;
+const inputWidth = (value: string, fallback = 6): UnitInputStyle => ({
+  '--input-ch': value.trim() ? `${value.length}ch` : `${fallback}ch`,
+});
 
 function initialForm(meta?: CatalogMeta): FormState {
   return {
@@ -302,28 +306,34 @@ export function App() {
               </label>
 
               <label>
-                Бюджет, ₸
-                <input
-                  type="number"
-                  min="1"
-                  step="1"
-                  value={form.budget}
-                  onChange={event => update('budget', event.target.value)}
-                  placeholder="1000000"
-                />
+                Бюджет
+                <span className="input-with-unit" style={inputWidth(form.budget, 7)}>
+                  <input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value={form.budget}
+                    onChange={event => update('budget', event.target.value)}
+                    placeholder="1000000"
+                  />
+                  {form.budget.trim() && <span className="unit-suffix">₸</span>}
+                </span>
               </label>
 
               <label>
-                Длительность, ч
-                <input
-                  type="number"
-                  min="0.5"
-                  max="24"
-                  step="0.5"
-                  value={form.hours}
-                  onChange={event => update('hours', event.target.value)}
-                  placeholder="не важно"
-                />
+                Длительность
+                <span className="input-with-unit" style={inputWidth(form.hours, 7)}>
+                  <input
+                    type="number"
+                    min="0.5"
+                    max="24"
+                    step="0.5"
+                    value={form.hours}
+                    onChange={event => update('hours', event.target.value)}
+                    placeholder="не важно"
+                  />
+                  {form.hours.trim() && <span className="unit-suffix">ч</span>}
+                </span>
               </label>
 
               <label>
@@ -387,7 +397,7 @@ export function App() {
 
             {!result && !submitError && (
               <div className="empty-state">
-                <Sparkles size={26} />
+                <Sparkles size={44} />
                 <p>Выберите параметры или один из демо-запросов. Здесь появится до трех карточек с проверяемыми причинами выбора.</p>
               </div>
             )}
