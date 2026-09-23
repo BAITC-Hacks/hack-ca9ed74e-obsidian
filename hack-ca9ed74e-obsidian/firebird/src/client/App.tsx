@@ -387,7 +387,7 @@ export function App() {
 
             {!result && !submitError && (
               <div className="empty-state">
-                <Sparkles size={34} />
+                <Sparkles size={44} />
                 <p>Выберите параметры или один из демо-запросов. Здесь появится до трех карточек с проверяемыми причинами выбора.</p>
               </div>
             )}
