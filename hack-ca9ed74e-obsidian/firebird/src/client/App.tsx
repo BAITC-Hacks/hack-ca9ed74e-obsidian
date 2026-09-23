@@ -241,7 +241,7 @@ export function App() {
           <div className="brand">
             <span className="brand-mark"><Flame size={22} /></span>
             <div>
-              <p className="eyebrow">HackAlem · Firebird #79-lite</p>
+              <p className="eyebrow">HackAlem · #79-lite</p>
               <h1>Умный подбор event-подрядчиков</h1>
             </div>
           </div>
@@ -347,6 +347,16 @@ export function App() {
                 </button>
               ))}
             </div>
+
+            <section className="method-panel" aria-label="Как работает подбор">
+              <h2>Как считается</h2>
+              <ol>
+                <li>Берём только город и категорию из каталога.</li>
+                <li>Убираем занятых, дорогих и неподходящих по формату.</li>
+                <li>Проверяем язык и длительность, если они указаны.</li>
+                <li>Сортируем стабильно: смысл описания, цена, ID.</li>
+              </ol>
+            </section>
           </aside>
 
           <section className="results-panel">
