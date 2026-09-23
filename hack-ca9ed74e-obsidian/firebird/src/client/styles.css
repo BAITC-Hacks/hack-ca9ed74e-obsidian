@@ -304,6 +304,31 @@ small {
   padding: 7px 10px;
 }
 
+.screening-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: -4px 0 16px;
+  border: 1px solid #dbe5e1;
+  border-radius: 8px;
+  background: #fbfdfc;
+  padding: 10px 12px;
+  color: #455a55;
+}
+
+.screening-line span {
+  font-weight: 900;
+}
+
+.screening-line small {
+  border-radius: 999px;
+  background: #edf5f2;
+  color: #38544e;
+  padding: 5px 8px;
+  font-weight: 800;
+}
+
 .empty-state {
   display: grid;
   place-items: center;

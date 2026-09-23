@@ -168,6 +168,10 @@ function profileBadges(card: Recommendation, query: Query) {
   return badges;
 }
 
+function activeReasons(result: SearchResult) {
+  return Object.entries(result.reasons).filter(([, count]) => count > 0);
+}
+
 export function App() {
   const [meta, setMeta] = useState<CatalogMeta | null>(null);
   const [form, setForm] = useState<FormState>(() => initialForm());
@@ -381,6 +385,15 @@ export function App() {
                   <span><WalletCards size={15} />{money(result.query.budget)} ₸</span>
                   {result.query.language && <span><Languages size={15} />{result.query.language}</span>}
                 </div>
+
+                {result.status === 'matched' && result.excludedCount > 0 && (
+                  <div className="screening-line">
+                    <span>Отсеяно {result.excludedCount} из {result.totalInCategory}</span>
+                    {activeReasons(result).map(([reason, count]) => (
+                      <small key={reason}>{reasonLabel(reason)}: {count}</small>
+                    ))}
+                  </div>
+                )}
 
                 <div className="cards">
                   {result.recommendations.map((card, index) => (
