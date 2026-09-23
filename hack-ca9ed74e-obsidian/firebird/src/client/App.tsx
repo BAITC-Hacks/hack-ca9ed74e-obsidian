@@ -157,7 +157,7 @@ function statusCopy(result: SearchResult) {
   if (result.status === 'category_absent') {
     return `В городе ${result.query.city} нет подрядчиков категории «${result.query.category}».`;
   }
-  return `Кандидаты в этой категории есть, но ни один не прошел все условия запроса.${topReasonText(result)}`;
+  return `Нет подходящих.${topReasonText(result)}`;
 }
 
 function profileBadges(card: Recommendation, query: Query) {
@@ -175,7 +175,7 @@ function activeReasons(result: SearchResult) {
 function topReasonText(result: SearchResult) {
   const [reason, count] = activeReasons(result).sort((a, b) => b[1] - a[1])[0] ?? [];
   if (!reason || !count) return '';
-  return ` Главная причина: ${reasonLabel(reason)} — ${count}.`;
+  return ` Причина: ${reasonLabel(reason)} — ${count}.`;
 }
 
 export function App() {
@@ -362,18 +362,21 @@ export function App() {
           </aside>
 
           <section className="results-panel">
-            <section className="demo-route" aria-label="Маршрут демо">
-              <div>
-                <span>1</span>
-                <p>Покажите плотную категорию и объяснения в карточках.</p>
-              </div>
-              <div>
-                <span>2</span>
-                <p>Смените дату: состав меняется из-за занятости.</p>
-              </div>
-              <div>
-                <span>3</span>
-                <p>Откройте пустой результат: причина видна без ошибки.</p>
+            <section className="demo-guide" aria-label="Инструкция">
+              <h2>Инструкция</h2>
+              <div className="demo-route">
+                <div>
+                  <span>1</span>
+                  <p>Покажите плотную категорию и объяснения в карточках.</p>
+                </div>
+                <div>
+                  <span>2</span>
+                  <p>Смените дату: состав меняется из-за занятости.</p>
+                </div>
+                <div>
+                  <span>3</span>
+                  <p>Откройте пустой результат: причина видна без ошибки.</p>
+                </div>
               </div>
             </section>
 

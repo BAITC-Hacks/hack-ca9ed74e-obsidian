@@ -372,6 +372,10 @@ small {
   margin-bottom: 18px;
 }
 
+.demo-guide h2 {
+  margin-bottom: 10px;
+}
+
 .demo-route div {
   display: grid;
   grid-template-columns: 28px 1fr;
