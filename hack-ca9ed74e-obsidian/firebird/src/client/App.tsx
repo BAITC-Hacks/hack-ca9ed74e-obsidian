@@ -254,7 +254,6 @@ export function App() {
             {meta ? (
               <>
                 <span>{meta.count} профилей</span>
-                <span>{meta.syntheticCount} synthetic</span>
                 <span>{meta.aiConfigured ? 'AI включен' : 'локальный режим'}</span>
               </>
             ) : (
