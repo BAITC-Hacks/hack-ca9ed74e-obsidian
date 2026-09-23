@@ -157,7 +157,7 @@ function statusCopy(result: SearchResult) {
   if (result.status === 'category_absent') {
     return `В городе ${result.query.city} нет подрядчиков категории «${result.query.category}».`;
   }
-  return 'Кандидаты в этой категории есть, но ни один не прошел все условия запроса.';
+  return `Кандидаты в этой категории есть, но ни один не прошел все условия запроса.${topReasonText(result)}`;
 }
 
 function profileBadges(card: Recommendation, query: Query) {
@@ -170,6 +170,12 @@ function profileBadges(card: Recommendation, query: Query) {
 
 function activeReasons(result: SearchResult) {
   return Object.entries(result.reasons).filter(([, count]) => count > 0);
+}
+
+function topReasonText(result: SearchResult) {
+  const [reason, count] = activeReasons(result).sort((a, b) => b[1] - a[1])[0] ?? [];
+  if (!reason || !count) return '';
+  return ` Главная причина: ${reasonLabel(reason)} — ${count}.`;
 }
 
 export function App() {

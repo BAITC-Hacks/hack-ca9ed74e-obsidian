@@ -31,7 +31,8 @@ try {
     case 'build': await run('tsc', ['--noEmit']); await run('vite', ['build']); break;
     case 'start': await run('tsx', ['src/server/index.ts', '--production']); break;
     case 'test': await run('vitest', ['run']); break;
+    case 'smoke': await run('tsx', ['scripts/smoke.ts']); break;
     case 'check': await run('tsc', ['--noEmit']); await run('vitest', ['run']); break;
-    default: throw new Error('Use: node scripts/run.mjs dev|build|start|test|check');
+    default: throw new Error('Use: node scripts/run.mjs dev|build|start|test|smoke|check');
   }
 } catch (error) { console.error(error.message); stop(); process.exitCode = 1; }
