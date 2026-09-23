@@ -4,7 +4,6 @@ import {
   CalendarDays,
   CheckCircle2,
   ChevronDown,
-  Clock3,
   Filter,
   Flame,
   Languages,
@@ -143,10 +142,6 @@ function reasonLabel(reason: string) {
     duration: 'не тянут длительность',
   };
   return labels[reason] ?? reason;
-}
-
-function modeLabel(mode: SearchResult['explanationMode']) {
-  return mode === 'ai' ? 'AI выбрал источник' : mode === 'fallback' ? 'локальный fallback' : 'локальные правила';
 }
 
 function statusCopy(result: SearchResult) {
@@ -386,12 +381,6 @@ export function App() {
                 <p className="eyebrow">Детерминированная выдача</p>
                 <h2>Карточки и объяснения</h2>
               </div>
-              {result && (
-                <span className="runtime">
-                  <Clock3 size={16} />
-                  {result.elapsedMs} мс · {modeLabel(result.explanationMode)}
-                </span>
-              )}
             </div>
 
             {submitError && <div className="state danger"><AlertCircle size={20} />{submitError}</div>}

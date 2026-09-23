@@ -49,7 +49,6 @@ button:disabled {
 .badges,
 .meta-strip,
 .state,
-.runtime,
 .panel-title,
 summary {
   display: flex;
@@ -119,7 +118,6 @@ h3 {
 }
 
 .meta-strip span,
-.runtime,
 .source,
 .badges span,
 .query-summary span,
@@ -276,12 +274,6 @@ small {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
-}
-
-.runtime {
-  gap: 6px;
-  padding: 8px 11px;
-  white-space: nowrap;
 }
 
 .demo-route {
