@@ -305,7 +305,7 @@ export function App() {
                 <input
                   type="number"
                   min="1"
-                  step="10000"
+                  step="1"
                   value={form.budget}
                   onChange={event => update('budget', event.target.value)}
                   placeholder="1000000"
