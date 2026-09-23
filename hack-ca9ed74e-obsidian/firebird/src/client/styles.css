@@ -284,6 +284,42 @@ small {
   white-space: nowrap;
 }
 
+.demo-route {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.demo-route div {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 9px;
+  align-items: start;
+  border: 1px solid #dbe5e1;
+  border-radius: 8px;
+  background: #fbfdfc;
+  padding: 10px;
+}
+
+.demo-route span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #2f766b;
+  color: #fff;
+  font-weight: 900;
+}
+
+.demo-route p {
+  margin: 0;
+  color: #435551;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
 .state {
   gap: 10px;
   margin-bottom: 14px;
@@ -522,6 +558,10 @@ blockquote {
 
   .results-panel {
     min-height: 420px;
+  }
+
+  .demo-route {
+    grid-template-columns: 1fr;
   }
 }
 

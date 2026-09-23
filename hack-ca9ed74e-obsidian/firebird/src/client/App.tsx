@@ -366,6 +366,21 @@ export function App() {
           </aside>
 
           <section className="results-panel">
+            <section className="demo-route" aria-label="Маршрут демо">
+              <div>
+                <span>1</span>
+                <p>Покажите плотную категорию и объяснения в карточках.</p>
+              </div>
+              <div>
+                <span>2</span>
+                <p>Смените дату: состав меняется из-за занятости.</p>
+              </div>
+              <div>
+                <span>3</span>
+                <p>Откройте пустой результат: причина видна без ошибки.</p>
+              </div>
+            </section>
+
             <div className="result-header">
               <div>
                 <p className="eyebrow">Детерминированная выдача</p>
