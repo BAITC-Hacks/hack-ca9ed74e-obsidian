@@ -34,7 +34,7 @@ const cases: SmokeCase[] = [
   },
   {
     name: 'category absent in city',
-    query: { city: 'Астана', date: '2026-10-10', format: 'корпоратив', category: 'Декоратор', budget: 700_000 },
+    query: { city: 'Зарубежье', date: '2026-10-10', format: 'корпоратив', category: 'Фото и видеобудки', budget: 700_000 },
     status: 'category_absent',
     cards: 0,
   },

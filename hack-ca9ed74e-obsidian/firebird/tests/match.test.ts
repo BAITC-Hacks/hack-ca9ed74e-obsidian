@@ -7,12 +7,12 @@ import type { Profile, Query } from '../src/shared/types';
 const profiles = loadCatalog();
 export const demo: Query = { city: 'Алматы', category: 'Ведущий', format: 'корпоратив', date: '2026-10-10', budget: 1_000_000, hours: 6, language: 'русский' };
 
-describe('original organizer catalog', () => {
+describe('catalog', () => {
   it('loads all records and preserves provenance and nullable durations', () => {
-    expect(profiles).toHaveLength(66);
-    expect(new Set(profiles.map(p => p.id)).size).toBe(66);
-    expect(profiles.filter(p => p.synthetic)).toHaveLength(13);
-    expect(profiles.filter(p => p.maxHours === null)).toHaveLength(9);
+    expect(profiles).toHaveLength(94);
+    expect(new Set(profiles.map(p => p.id)).size).toBe(94);
+    expect(profiles.filter(p => p.synthetic)).toHaveLength(41);
+    expect(profiles.filter(p => p.maxHours === null)).toHaveLength(14);
     expect(profiles.filter(p => p.priceImputed)).toHaveLength(18);
   });
   it('ranks 4 eligible October candidates into exactly 3 cards', () => {
@@ -48,7 +48,7 @@ describe('original organizer catalog', () => {
     expect(result.reasons.duration).toBe(0);
   });
   it('distinguishes category absence from restrictive conditions', () => {
-    expect(match(profiles, { ...demo, city: 'Астана', category: 'Декоратор' }).status).toBe('category_absent');
+    expect(match(profiles, { ...demo, city: 'Зарубежье', category: 'Фото и видеобудки' }).status).toBe('category_absent');
     const blocked = match(profiles, { ...demo, budget: 100_000 });
     expect(blocked.status).toBe('no_match');
     expect(blocked.reasons.budget).toBe(10);
@@ -67,7 +67,7 @@ describe('original organizer catalog', () => {
   it('applies the same calendar to venues without duplicating multi-category profiles', () => {
     const query = { ...demo, category: 'Банкетный зал', budget: 10_000_000 };
     const result = match(profiles, query);
-    expect(result.totalInCategory).toBe(7);
+    expect(result.totalInCategory).toBe(8);
     expect(new Set(result.recommendations.map(c => c.profile.id)).size).toBe(result.recommendations.length);
     expect(result.recommendations.every(c => !c.profile.busyDates.includes(query.date))).toBe(true);
   });

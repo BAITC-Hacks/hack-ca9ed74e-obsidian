@@ -13,9 +13,9 @@ afterAll(async () => { await new Promise<void>((resolve, reject) => server.close
 
 describe('HTTP API', () => {
   it('reports catalog and operational health', async () => {
-    expect(await (await fetch(`${origin}/api/health`)).json()).toEqual({ status: 'ok', profiles: 66 });
+    expect(await (await fetch(`${origin}/api/health`)).json()).toEqual({ status: 'ok', profiles: 94 });
     const meta = await (await fetch(`${origin}/api/catalog`)).json();
-    expect(meta.count).toBe(66);
+    expect(meta.count).toBe(94);
     expect(meta.aiConfigured).toBe(false);
     expect(meta.categories).toContain('Банкетный зал');
   });

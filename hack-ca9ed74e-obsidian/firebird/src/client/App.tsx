@@ -68,12 +68,12 @@ const presets: { label: string; note: string; query: FormState }[] = [
   },
   {
     label: 'Нет категории',
-    note: 'Декоратор в Астане',
+    note: 'Фотобудка за рубежом',
     query: {
-      city: 'Астана',
+      city: 'Зарубежье',
       date: '2026-10-10',
       format: 'корпоратив',
-      category: 'Декоратор',
+      category: 'Фото и видеобудки',
       budget: '700000',
       hours: '',
       language: '',
