@@ -108,6 +108,7 @@ const presets: { label: string; note: string; query: FormState }[] = [
 
 const money = (value: number) => new Intl.NumberFormat('ru-RU').format(value);
 const dateText = (value: string) => value.split('-').reverse().join('.');
+const titleCase = (value: string) => value ? value[0].toLocaleUpperCase('ru-RU') + value.slice(1) : value;
 
 function initialForm(meta?: CatalogMeta): FormState {
   return {
@@ -157,8 +158,8 @@ function statusCopy(result: SearchResult) {
 
 function profileBadges(card: Recommendation, query: Query) {
   const { profile } = card;
-  const badges = [`${profile.city}`, `от ${money(profile.price)} ₸`, query.format];
-  if (query.language) badges.push(query.language);
+  const badges = [`${profile.city}`, `от ${money(profile.price)} ₸`, titleCase(query.format)];
+  if (query.language) badges.push(titleCase(query.language));
   if (query.hours !== undefined) badges.push(profile.maxHours === null ? 'без ограничения часов' : `до ${profile.maxHours} ч`);
   return badges;
 }
@@ -242,7 +243,6 @@ export function App() {
           <div className="brand">
             <span className="brand-mark"><Flame size={22} /></span>
             <div>
-              <p className="eyebrow">HackAlem · #79-lite</p>
               <h1>Умный подбор event-подрядчиков</h1>
             </div>
           </div>
@@ -290,7 +290,7 @@ export function App() {
               <label>
                 Формат
                 <select value={form.format} onChange={event => update('format', event.target.value)} disabled={!meta}>
-                  {(meta?.formats ?? [form.format]).map(format => <option key={format}>{format}</option>)}
+                  {(meta?.formats ?? [form.format]).map(format => <option key={format} value={format}>{titleCase(format)}</option>)}
                 </select>
               </label>
 
@@ -329,8 +329,8 @@ export function App() {
               <label>
                 Язык
                 <select value={form.language} onChange={event => update('language', event.target.value)} disabled={!meta}>
-                  <option value="">любой</option>
-                  {(meta?.languages ?? []).map(language => <option key={language}>{language}</option>)}
+                  <option value="">Любой</option>
+                  {(meta?.languages ?? []).map(language => <option key={language} value={language}>{titleCase(language)}</option>)}
                 </select>
               </label>
 
@@ -403,7 +403,7 @@ export function App() {
                   <span><MapPin size={15} />{result.query.city}</span>
                   <span><CalendarDays size={15} />{dateText(result.query.date)}</span>
                   <span><WalletCards size={15} />{money(result.query.budget)} ₸</span>
-                  {result.query.language && <span><Languages size={15} />{result.query.language}</span>}
+                  {result.query.language && <span><Languages size={15} />{titleCase(result.query.language)}</span>}
                 </div>
 
                 {result.status === 'matched' && result.excludedCount > 0 && (
