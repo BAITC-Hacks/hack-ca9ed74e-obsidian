@@ -562,6 +562,7 @@ small {
 }
 
 details {
+  margin-top: 10px;
   border-top: 1px solid #edf1ef;
   padding-top: 10px;
   color: #52645f;
@@ -579,10 +580,38 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+summary svg {
+  flex-shrink: 0;
+  transition: transform .16s ease;
+}
+
+details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.source-details {
+  margin-top: 10px;
+  border: 1px solid #e0e9e5;
+  border-radius: 8px;
+  background: #fbfdfc;
+  padding: 10px 12px;
+}
+
+.source-details p {
+  margin: 0 0 9px;
+  color: #40534e;
+  line-height: 1.45;
+}
+
+.source-details strong {
+  color: #2f5f57;
+  font-weight: 900;
+}
+
 blockquote {
-  margin: 10px 0 0;
+  margin: 0;
   border-left: 3px solid #c7d6d1;
-  padding-left: 10px;
+  padding: 7px 0 7px 10px;
   color: #3e504b;
   line-height: 1.5;
 }

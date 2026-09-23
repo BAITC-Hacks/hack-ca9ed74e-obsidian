@@ -453,8 +453,10 @@ export function App() {
                             <ChevronDown size={16} />
                             Источник и правило ранжирования
                           </summary>
-                          <p>{card.rankReason}. ID профиля: {card.profile.id}.</p>
-                          <blockquote>{card.evidence.find(item => item.id === card.selectedEvidenceId)?.text ?? card.evidence[0]?.text}</blockquote>
+                          <div className="source-details">
+                            <p>{card.rankReason}. <span>ID профиля: <strong>{card.profile.id}</strong>.</span></p>
+                            <blockquote>{card.evidence.find(item => item.id === card.selectedEvidenceId)?.text ?? card.evidence[0]?.text}</blockquote>
+                          </div>
                         </details>
                       </div>
                     </article>
