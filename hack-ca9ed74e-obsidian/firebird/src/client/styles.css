@@ -135,7 +135,7 @@ h3 {
 }
 
 .layout {
-  align-items: flex-start;
+  align-items: stretch;
   gap: 18px;
 }
 
@@ -156,6 +156,8 @@ h3 {
 }
 
 .results-panel {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-height: 680px;
   padding: 22px;
@@ -282,10 +284,8 @@ button:focus-visible {
 
 .preset-list {
   display: grid;
-  gap: 8px;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid #e0e8e5;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .method-panel {
@@ -312,6 +312,27 @@ button:focus-visible {
 .method-panel li::marker {
   color: #2f766b;
   font-weight: 900;
+}
+
+.presets-panel {
+  margin-bottom: 18px;
+  border: 1px solid #dbe5e1;
+  border-radius: 8px;
+  background: #fbfdfc;
+  padding: 12px;
+}
+
+.presets-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.presets-panel-head h3 {
+  margin: 0;
+  font-size: 15px;
 }
 
 .preset-list button,
@@ -453,6 +474,7 @@ small {
 
 .empty-state {
   display: grid;
+  flex: 1;
   align-content: center;
   justify-items: center;
   gap: 14px;
@@ -566,6 +588,7 @@ blockquote {
 }
 
 .diagnostics {
+  flex: 1;
   margin-top: 16px;
   border: 1px solid #e1e8e5;
   border-radius: 8px;
@@ -623,6 +646,10 @@ blockquote {
   }
 
   .demo-route {
+    grid-template-columns: 1fr;
+  }
+
+  .preset-list {
     grid-template-columns: 1fr;
   }
 }

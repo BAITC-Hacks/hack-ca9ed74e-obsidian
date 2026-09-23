@@ -350,15 +350,6 @@ export function App() {
               </button>
             </form>
 
-            <div className="preset-list">
-              {presets.map(preset => (
-                <button type="button" key={preset.label} onClick={() => applyPreset(preset.query)}>
-                  <span>{preset.label}</span>
-                  <small>{preset.note}</small>
-                </button>
-              ))}
-            </div>
-
             <section className="method-panel" aria-label="Как работает подбор">
               <h2>Как считается</h2>
               <ol>
@@ -368,6 +359,7 @@ export function App() {
                 <li>Сортируем стабильно: смысл описания, цена, ID.</li>
               </ol>
             </section>
+
           </aside>
 
           <section className="results-panel">
@@ -392,6 +384,21 @@ export function App() {
                 <h2>Карточки и объяснения</h2>
               </div>
             </div>
+
+            <section className="presets-panel" aria-label="Демо-запросы">
+              <div className="presets-panel-head">
+                <h3>Демо-запросы</h3>
+                <small>Для быстрого показа сценариев жюри</small>
+              </div>
+              <div className="preset-list">
+                {presets.map(preset => (
+                  <button type="button" key={preset.label} onClick={() => applyPreset(preset.query)}>
+                    <span>{preset.label}</span>
+                    <small>{preset.note}</small>
+                  </button>
+                ))}
+              </div>
+            </section>
 
             {submitError && <div className="state danger"><AlertCircle size={20} />{submitError}</div>}
 
