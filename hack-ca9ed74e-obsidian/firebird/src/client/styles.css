@@ -216,6 +216,57 @@ button:focus-visible {
   box-shadow: 0 0 0 3px rgba(47, 118, 107, .16);
 }
 
+.input-with-unit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #cbd8d4;
+  border-radius: 6px;
+  background: #fff;
+  padding: 9px 10px;
+}
+
+.input-with-unit:focus-within {
+  border-color: #2f766b;
+  box-shadow: 0 0 0 3px rgba(47, 118, 107, .16);
+}
+
+.input-with-unit input {
+  width: var(--input-ch);
+  min-width: 1ch;
+  max-width: calc(100% - 28px);
+  min-height: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  appearance: textfield;
+}
+
+.input-with-unit input:placeholder-shown {
+  width: 100%;
+  max-width: 100%;
+}
+
+.input-with-unit input:focus {
+  border: 0;
+  box-shadow: none;
+}
+
+.input-with-unit input::-webkit-outer-spin-button,
+.input-with-unit input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.unit-suffix {
+  color: #60716d;
+  font-weight: 900;
+  margin-left: 5px;
+  pointer-events: none;
+}
+
 .primary-button {
   min-height: 46px;
   border: 0;
@@ -304,7 +355,7 @@ small {
   display: grid;
   grid-template-columns: 28px 1fr;
   gap: 9px;
-  align-items: start;
+  align-items: center;
   border: 1px solid #dbe5e1;
   border-radius: 8px;
   background: #fbfdfc;
@@ -326,7 +377,7 @@ small {
   margin: 0;
   color: #435551;
   font-size: 13px;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .state {
